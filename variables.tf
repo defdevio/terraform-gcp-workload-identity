@@ -24,8 +24,4 @@ variable "kubernetes_service_account" {
   type    = string
   default = "opendepot-server"
 }
-variable "project_roles" {
-  type    = set(string)
-  default = ["roles/storage.objectAdmin"]
-}
 

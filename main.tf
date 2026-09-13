@@ -12,10 +12,3 @@ resource "google_service_account_iam_member" "workload_identity" {
   member             = "serviceAccount:${var.project_id}.svc.id.goog[${var.kubernetes_namespace}/${var.kubernetes_service_account}]"
 }
 
-resource "google_project_iam_member" "project_roles" {
-  for_each = var.create_resources ? var.project_roles : toset([])
-  project  = var.project_id
-  role     = each.value
-  member   = "serviceAccount:${google_service_account.this[0].email}"
-}
-

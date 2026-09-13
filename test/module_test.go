@@ -23,4 +23,5 @@ func TestModulePlan(t *testing.T) {
 	plan := terraform.ShowWithStruct(t, options)
 
 	assert.Empty(t, plan.ResourceChangesMap)
+	assert.Equal(t, "serviceAccount:opendepot-demo.svc.id.goog[opendepot/opendepot-server]", plan.RawPlan.OutputChanges["workload_identity_member"].After)
 }
