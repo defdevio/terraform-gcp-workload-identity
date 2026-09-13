@@ -1,27 +1,42 @@
-variable "project_id" { type = string }
+variable "project_id" {
+  description = "Google Cloud project that owns the workload identity service account."
+  type        = string
+}
+
 variable "access_token" {
-  type      = string
-  default   = null
-  sensitive = true
+  description = "Optional Google access token for authenticated operations."
+  type        = string
+  default     = null
+  sensitive   = true
 }
+
 variable "create_resources" {
-  type    = bool
-  default = true
+  description = "Whether to create the Google service account and IAM binding. Set false for credential-free validation."
+  type        = bool
+  default     = true
 }
+
 variable "service_account_id" {
-  type    = string
-  default = "opendepot-gke"
+  description = "Account ID for the Google service account used by the workload."
+  type        = string
+  default     = "opendepot-gke"
 }
+
 variable "service_account_display_name" {
-  type    = string
-  default = "OpenDepot GKE workload identity"
+  description = "Display name for the Google service account."
+  type        = string
+  default     = "OpenDepot GKE workload identity"
 }
+
 variable "kubernetes_namespace" {
-  type    = string
-  default = "opendepot"
+  description = "Kubernetes namespace that can impersonate the Google service account."
+  type        = string
+  default     = "opendepot"
 }
+
 variable "kubernetes_service_account" {
-  type    = string
-  default = "opendepot-server"
+  description = "Kubernetes service account that can impersonate the Google service account."
+  type        = string
+  default     = "opendepot-server"
 }
 
